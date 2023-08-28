@@ -1,2 +1,0 @@
-- [QTM 110 Intro to Scientific Methods](README.md)
-  - [Module 2](module2.md)
