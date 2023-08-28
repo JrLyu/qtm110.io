@@ -12,7 +12,7 @@
 ### Three Definitions of Average
 - Arithmetic Mean: sum and divide by number.
 - Median: observation that divides ordered data in half.
-  - For a data set $x$ of $n$ elements, ordered from smallest to greatest, 
+  - For a data set $$x$$ of $$n$$ elements, ordered from smallest to greatest, 
     - if $$n$$ is odd, $$\text{median}(x)=x_{(n+1)/2}$$
     - if $$n$$ is even, $$\text{median}(x)=\dfrac{x_{(n/2)}+x_{(n/2)+1}}{2}$$
 - Mode: the most common observation.
@@ -42,7 +42,7 @@
 | Does Not Change | None (variables are uncorrelated or **independent**) | $$\text{corr}(X,Y)=0$$ |
 | Falls | Negative | $$\text{corr}(X,Y)<0$$ |
 
-### Formalizing Correlation
+## Formalizing Correlation
 - **Covariance** is one statistic to measure correlation: 
 $$
 \text{cov}(X,Y)=E\Big[\big(X-\mu_X\big)\big(Y-\mu_Y\big)\Big],
@@ -64,3 +64,18 @@ $$
   - A positive correlation will result in a correlation coefficient $$>0$$.
   - If $$\text{corr}(X,Y)=1$$, then there is a perfect linear positive relationship between them, which can be modeled using $$Y=\beta\times X+\alpha,$$ with $$\beta>0$$.
   - If $$\text{corr}(X,Y)$$ is positive but less than $$1$$, there is not a perfect linear relationship between them.
+  - If $$\text{corr}(X,Y)=-1$$, then there is a perfect linear negative relationship between them, which can be modeled using $$Y=-\beta\times X+\alpha$$, with $$\beta>0$$. 
+  - If $$\text{corr}(X,Y)$$ is negative but greater than $$-1$$, then there is not a perfect linear relationship between them. 
+  - Change of unit does not change the value of correlation coefficient.
+
+### Comparison between Covariance and Correlation
+- Range: 
+  -  Covariance: $$(-\infty,\infty)$$
+  -  Correlation: $$[1,1]$$
+
+
+| As $$X$$ rises, $$Y$$... | Type of Correlation/Covariance | Value of Covariance | Value of Correlation |
+|:---:|:---:|:---:|:---:|
+| Rises | Positive | $$\text{cov}(X,Y)>0$$ | $$0<\text{corr}(X,Y)\leq1$$ |
+| Does Not Change | None (variables are uncorrelated or **independent**) | $$\text{cov}(X,Y)=0$$ | $$\text{corr}(X,Y)=0$$|
+| Falls | Negative | $$\text{cov}(X,Y)<0$$ | $$-1\leq\text{corr}(X,Y)<0$$|
