@@ -315,6 +315,93 @@ where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msu
 </tr>
 </tbody>
 </table>
+<h3 id="more-on-correlation">More on Correlation</h3>
+<ul>
+<li>Magnitude of the relationship<ul>
+<li>We can normalize by variance in <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> to get &quot;slope&quot;/regression coefficient: </li>
+</ul>
+</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>&#x3B2;</mi><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">v</mi></mtext><mo>(</mo><mi>X</mi><mo separator="true">,</mo><mi>Y</mi><mo>)</mo></mrow><mrow><msubsup><mi>&#x3C3;</mi><mi>X</mi><mn>2</mn></msubsup></mrow></mfrac></mrow><annotation encoding="application/x-tex">
+\beta=\dfrac{\text{cov}(X,Y)}{\sigma_X^2}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.427em;"></span><span class="strut bottom" style="height:2.406531em;vertical-align:-0.9795309999999999em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.05278em;">&#x3B2;</span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.6859999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">&#x3C3;</span><span class="msupsub"><span class="vlist"><span style="top:0.29353099999999993em;margin-left:-0.03588em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight" style="margin-right:0.07847em;">X</span></span></span><span style="top:-0.34480000000000005em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">cov</span></span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></p>
+<ul>
+<li>This number tells us, descriptively, how much <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span> changes, on average, as <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> increases by one unit. </li>
+<li>So if relationship is near linear but very weak, we would get a small number.</li>
+</ul>
+<ul>
+<li>Limits of Correlation Coefficients: <ul>
+<li>Do not indicate strength of association very well: <ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">r</span></span></span></span> gives us an overall measure of how close the dots (observed data) are to the line (best-fit-line)</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">r</span></span></span></span> does not tell us how much <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span> changes with a unit change in <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span>.</li>
+</ul>
+</li>
+<li>Cannot generalize or make predictions<ul>
+<li>Must know equation (slope) of best fit line to make predictions.</li>
+</ul>
+</li>
+<li>Assumes <strong>linear</strong> relationships -- can&apos;t capture other associations<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mo>&#x2248;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r\approx0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mrel">&#x2248;</span><span class="mord mathrm">0</span></span></span></span> does not always mean no association. </li>
+<li>Always plot the data to see its shape. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="uses-of-correlation">Uses of Correlation</h2>
+<ul>
+<li><p>Why we measure correlation? </p>
+<ul>
+<li>Description (Easy)</li>
+<li>Prediction (Harder)</li>
+<li>Causal Inference (Hardest)</li>
+</ul>
+</li>
+<li><p>Step 0: Data and Measurement: </p>
+<ul>
+<li>Before we can even describe relationships between variables, we need to make sure we have good variables. </li>
+<li>Two parts: concept validity &amp; Accuracy</li>
+</ul>
+</li>
+<li><p>Description: </p>
+<ul>
+<li>No additional assumptions needed (Good)<ul>
+<li>Just need to assume our data is accurate and reflects concept</li>
+</ul>
+</li>
+<li>Might be of interesting in and of its own</li>
+<li>More likely a starting point of a deeper question</li>
+</ul>
+</li>
+<li><p>Predictive Questions: </p>
+<ul>
+<li>Prediction Assumptions 1: <ul>
+<li>From data we predict from (training data) to what we predict to (prediction)</li>
+</ul>
+</li>
+<li>Prediction Assumptions 2:<ul>
+<li>Appropriate Model: Linearity </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Unbiased Prediction: </p>
+<ul>
+<li><strong>Unbiased</strong>: would my prediction be right (on average) if I was able to make 1000s of predictions</li>
+<li>Needs:<ul>
+<li>Linear relationship</li>
+<li>Representative Sample</li>
+<li>Forecast in our range of data</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Causal Inference:</p>
+<ul>
+<li>How does changing a feature of the world change some other feature? </li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -354,7 +441,7 @@ where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msu
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Module 2","level":"1.1.1","depth":2,"previous":{"title":"QTM 110 Intro to Scientific Methods","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"Module 2","level":"1.1.1","depth":2,"path":"module2.md","ref":"module2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"module2.md","mtime":"2023-08-28T23:24:29.096Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-28T23:33:38.951Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Module 2","level":"1.1.1","depth":2,"previous":{"title":"QTM 110 Intro to Scientific Methods","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[{"title":"Module 2","level":"1.1.1","depth":2,"path":"module2.md","ref":"module2.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"module2.md","mtime":"2023-08-30T15:13:50.512Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-30T15:14:14.327Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
