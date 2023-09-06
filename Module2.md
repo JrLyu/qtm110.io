@@ -132,3 +132,89 @@ $$
 
 - Causal Inference:
   - How does changing a feature of the world change some other feature? 
+  - There are situations where even knowing the causal story might not be enough for these predictions due to adaption
+
+- Review: Description, Prediction and Explanation
+  - Correlations can be used to:
+    - Describe an observable phenomenon
+    - Predict some outcome given observations
+    - Understand the phenomenon, to the point where we can manipulate it purposefully.
+  - As we move through these uses, we need to make more assumptions and/or have better research design.
+
+## Linearity
+- Lots of relationships between data are non-linear
+- One easy solution for much of what we do: transform variables.
+- Another easy solution is to split the problem up: 
+  - Everything is linear if you look close enough
+- For a really important class of problems linearity always applies: binary variable
+  - Treatment versus control
+- Other more sophisticated ways
+  - Lot of the success of Machine Learning (ML) etc. is dealing with interactions and non-linearity in higher dimensions
+  - Also a lot of classical statistical solutions to non-linearity
+
+## Candidates for Causation
+- A causal effect is a change in one feature of the world that results from a change in another feature of the world.
+- Causation Definition 1 -- Correlation: Can we predict one quantity by knowing another, using a known correlation between the two? 
+  - Reasoning: if we understand the cause, we should be able to forecast the outcome.
+  - However, **associations need not to be causal**
+    - Problem 1: Correlation w/o Causation
+      - Reverse Causality
+      - Common Cause
+    - Problem 2: Direction
+      - Correlation of $$X$$ with $$Y$$ is the same as $$Y$$ with $$X$$. 
+- Causation Definition 2 -- Regularity: Every time $$X$$ happens, $$Y$$ happens
+  - This definition addresses the issue of direction. 
+  - Problem 1: Deterministic
+  - Problem 2: Trivial relationships
+- Causation Definition 3 -- Temporal Order: The Arrow of Time. i.e., Event $$A$$ can cause event $$B$$ only if event $$A$$ precedes event $$B$$ in time. 
+  - Problems Prediction $$\neq$$ Causation
+- Causation Definition 4 -- Physical Connection
+  - We can experience with our sense. Maybe we should require that causes physically produce effects through some observable mechanism
+  - Problem: 
+    - Hard to verify in many cases
+    - Requires ever more convoluted stories
+- Causation Definition 5: Counterfactual Dependence
+> **Causation (Conterfactual Dependence)**: $$X$$ *causes* $$Y$$ if and only if 
+> - $$Y$$ occurs when $$X$$ occurs, and
+> - $$Y$$ would not have occurred in the counterfactual world where $$X$$ did not occur. 
+
+## Counterfactual Dependence
+- The counterfactual dependence model is also known as Rubin Causal Model (RCM) or Neyman-Rubin Causal Model. 
+- Definition Revisit: 
+  - Let $$T$$ be binary evenet ($$T$$ for Treatment)
+    - $$T=1$$: Treated
+    - $$T=0$$: Untreated
+  - Let $$Y$$ be some outcome of interest
+    - $$Y_1\equiv Y$$ in the counterfactual world where $$T=1$$.
+    - $$Y_0\equiv Y$$ in the counterfactual world where $$T=0$$.
+  - $$T$$ causes $$Y$$ if and only if $$Y$$ occurs when $$T$$ occurs, and $$Y$$ would not have occurred in the counterfactual world where $$T$$ did not occur. 
+- Individual Treatment Effect:
+  - Causal Effect on $$T$$ on $$Y$$ is $$Y_1-Y_0$$
+    - $$T$$ has a causal effect on $$Y$$ if and only if $$Y_1-Y_0\neq0$$
+    - Problem: $$Y_1-Y_0$$ is not observable.
+    - Many events can be causes of the same effect in this sense
+- Potential Outcomes Cheatsheet
+  
+| Quantity | $$E[Y_1\mid T=1]$$ | $$E[Y_0\mid T=0]$$ | $$E[Y_1\mid T=0]$$ | $$E[Y_0\mid T=1]$$ |
+|:---:|:---:|:---:|:---:|:---:|
+| Description | Average outcome in treated group | Average outcome in untreated group | Average outcome in the untreated group if they'd been treated | Average outcome in the treated group if they'd been untreated |
+|Factual (Observed) or Counterfactual? | Factual | Factual | Counterfactual | Counterfactual |
+
+## Limits to Counterfactual Dependence
+- The fundamental Problem of Causal Inference
+  - A most one of $$Y_1$$ or $$Y_0$$ is observable.
+  - If $$T=1$$, then we only see $$Y_1$$
+  - If $$T_0$$, we only observe $$Y_0$$
+  - Never get to observe $$Y_1-Y_0$$: the fundamental problem of causal inference
+- How will get purchase on the problem? 
+  - The goal is to get groups that are comparable to each other, but differ in whether they get the treatment or not
+    - Comparable in what sense? In the sense that they have the same potential outcomes - *Apples to Apples*
+    - Differ in treatment due to experimental manipulation or natural experiments
+    - All of this will be ON AVERAGE, so we will be restricted to talking about Average Causal Effect (or Average Treatment Effects)
+- Coherent and Incoherent Causal Questions: 
+  - Infinite number of factors that, had they been different, would have changed the real world.
+  - Solution: Narrow Question
+- Answerable and Unanswerable Causal Questions
+  - Questions are unanswerable due to the fundamental problem of causal inference
+  - As for unanswerable questions, we will instead talk about the Average Treatment Effect or the Average effects for a particular population of interest
+    - Does not mean one grand effect for all.
