@@ -1,0 +1,390 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Module 5 Biases and Noises · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Module4.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    QTM 110 Intro to Scientific Methods
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="Module2.html">
+            
+                <a href="Module2.html">
+            
+                    
+                    Module 2 Correlations and Causation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="Module3.html">
+            
+                <a href="Module3.html">
+            
+                    
+                    Module 3 Making Comparisons
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="Module4.html">
+            
+                <a href="Module4.html">
+            
+                    
+                    Module 4 A Useful Equation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.4" data-path="Module5.html">
+            
+                <a href="Module5.html">
+            
+                    
+                    Module 5 Biases and Noises
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Module 5 Biases and Noises</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="module-5-bias-and-noise">Module 5: Bias and Noise</h1>
+<h2 id="confounder">Confounder</h2>
+<blockquote>
+<p><strong>Confounder</strong>: a confounder is something directly affects both treatment status and outcome. </p>
+<ul>
+<li>Other terms: <ul>
+<li>Common Cause: Common cause of outcome and treatment</li>
+<li>Apples-to-oranges: Groups are not comparable in potential</li>
+<li>Omitted Variable Bias (OVB): There is a missing variable</li>
+</ul>
+</li>
+<li>Three conditions make a variable a confounder:<ul>
+<li>Associated with the <strong>treatment</strong></li>
+<li>Cause of the <strong>outcome</strong> separate from any effects it has one the <strong>treatment</strong></li>
+<li>Not along a causal path between <strong>treatment</strong> and <strong>outcome</strong> (i.e., not a <strong>mediator/mechanism</strong>).</li>
+<li>That is, it&apos;s not part of a casual chain like Exposure -&gt; &quot;Confounder&quot; -&gt; Outcome. It is something outside the casual chain.</li>
+</ul>
+</li>
+<li>Confounding is strictly a problem for <strong>causal questions</strong>.<ul>
+<li>It makes things look associated when there is no causal effect.</li>
+<li>Irrelevant for description or prediction</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="average-treatment-effects-and-bias">Average Treatment Effects and Bias</h2>
+<ul>
+<li>The Ideal<ul>
+<li>Potential Outcomes<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span>: the outcome we observe</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span>: a binary variable indicating if treatement is taken</li>
+</ul>
+</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mrow><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">Y_{1_i}=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.93343em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span></span></span></span> outcome observed for unit <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span> if <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">T=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span>.</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>=</mo></mrow><annotation encoding="application/x-tex">Y_{0_i}=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.93343em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">=</span></span></span></span> outcome observed for unit <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span> if <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span>.</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mrow><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>&#x2212;</mo><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">Y_{1_i}-Y_{0_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.93343em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> is the casual effect of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> for unit <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span> - cannot be observed</li>
+<li>The <strong>Average Treatement Effect (ATE)</strong> is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>&#x2212;</mo><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_{1_i}-Y_{0_i}]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mclose">]</span></span></span></span>.</li>
+<li>We can also think about ATE&apos;s for sub-populations <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>&#x2212;</mo><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>&#x2223;</mo><mi>Z</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_{1_i}-Y_{0_i}\mid Z]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.07153em;">Z</span><span class="mclose">]</span></span></span></span></li>
+<li>The casual effect among those who got the treatement: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">T</mi></mtext><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>&#x2212;</mo><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">\text{ATT}=E[Y_{1_i}-Y_{0_i}\mid T=1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">ATT</span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span></span><ul>
+<li>Expectations are linear, so we can re-write the formula as <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>&#x2212;</mo><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><msub><mn>1</mn><mi>i</mi></msub></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_{1_i}-Y_{0_i}\mid T=1]=E[Y_{1_i}\mid T=1]-E[Y_{0_i}\mid T=1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span></span></li>
+<li>However, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><msub><mn>0</mn><mi>i</mi></msub></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_{0_i}\mid T=1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.0001em;vertical-align:-0.2501em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mtight"><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist"><span style="top:0.143em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-scriptstyle scriptscriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span></span> is not an observable quantity. It is counterfactual. </li>
+</ul>
+</li>
+<li>How does this quantity of interest relate to the quantity that we can estimate? <ul>
+<li>What we can estimate: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>1</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_1\mid T=1]-E[Y_0\mid T=0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span></span></span></span>.<ul>
+<li>This is our estimate -&gt; a correlation</li>
+</ul>
+</li>
+<li>What we are interested in: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>1</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_1\mid T=1]-E[Y_0\mid T=1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span></span><ul>
+<li>This is our estimand -&gt; a causal effect.</li>
+</ul>
+</li>
+<li>Since <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">l</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi></mtext><mo>=</mo><mtext><mi mathvariant="normal">T</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">E</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi></mtext><mo>+</mo><mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi></mtext></mrow><annotation encoding="application/x-tex">\text{Correlation}=\text{True Effect}+\text{Bias}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">Correlation</span></span><span class="mrel">=</span><span class="mord text textstyle uncramped"><span class="mord mathrm">True&#xA0;Effect</span></span><span class="mbin">+</span><span class="mord text textstyle uncramped"><span class="mord mathrm">Bias</span></span></span></span></span> (ignore noise for now), we get 
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>1</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>1</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>+</mo><mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi></mtext></mrow><annotation encoding="application/x-tex">
+  E[Y_1\mid T=1]-E[Y_0\mid T=0]=E[Y_1\mid T=1]-E[Y_0\mid T=1]+\text{Bias}
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">+</span><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Bias</span></span></span></span></span></span></li>
+<li>So, we have
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi></mtext><mo>=</mo><mtext><mi mathvariant="normal">W</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">w</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">e</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi></mtext><mo>&#x2212;</mo><mtext><mi mathvariant="normal">W</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">w</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi></mtext></mrow><annotation encoding="application/x-tex">
+  \text{Bias}=\text{What we estimate}-\text{What we are interested in}
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Bias</span></span><span class="mrel">=</span><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">What&#xA0;we&#xA0;estimate</span></span><span class="mbin">&#x2212;</span><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">What&#xA0;we&#xA0;are&#xA0;interested&#xA0;in</span></span></span></span></span></span>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi></mtext></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>1</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>1</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>+</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd><mtd><mrow><mrow></mrow><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">
+  \begin{aligned}
+  \text{Bias}&amp;=E[Y_1\mid T=1]-E[Y_0\mid T=0]-E[Y_1\mid T=1]+E[Y_0\mid T=1]\\&amp;=E[Y_0\mid T=1]-E[Y_0\mid T=0]
+  \end{aligned}
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.45em;"></span><span class="strut bottom" style="height:2.4000000000000004em;vertical-align:-0.9500000000000004em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Bias</span></span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="col-align-l"><span class="vlist"><span style="top:-0.6099999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span><span style="top:0.5900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord displaystyle textstyle uncramped"></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span></span></span></li>
+<li>In other words, if these two groups have different <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">Y_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>&apos;s, then we have <strong>bias</strong>. </li>
+<li>The difference between average outcomes among the control group and the average outcome that we would have obtained among the treatment group had they not gotten the treatment. The bias is non-zero whenever <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2260;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">E[Y_0\mid T=1]\neq E[Y_0\mid T=0].</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mrel">&#x2260;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mord mathrm">.</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="randomness-and-omniscient-powers">Randomness and Omniscient Powers</h2>
+<ul>
+<li>What does &quot;apples-to-apples&quot; mean?<ul>
+<li>For purpose of estimating the ATT, we need no difference of the following properties between treatment and control groups <ul>
+<li>on average</li>
+<li>in <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">Y_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span></li>
+</ul>
+</li>
+<li>Note that in general, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">T</mi></mtext><mo>&#x2260;</mo><mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">T</mi><mi mathvariant="normal">E</mi></mtext></mrow><annotation encoding="application/x-tex">\text{ATT}\neq\text{ATE}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.716em;"></span><span class="strut bottom" style="height:0.9309999999999999em;vertical-align:-0.215em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">ATT</span></span><span class="mrel">&#x2260;</span><span class="mord text textstyle uncramped"><span class="mord mathrm">ATE</span></span></span></span></span>. For comparison of the treatment and control to give an unbiased estimate of the ATE, we need a similar conditon on <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">Y_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>.</li>
+</ul>
+</li>
+<li>What we would like to do: Randomize<ul>
+<li>If we could randomize, then the only difference between units would be if they received treatment</li>
+<li>In particular, units would have the same potential units if we randomly assigned to two groups: <ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>A</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_0\mid A]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit">A</span><span class="mclose">]</span></span></span></span> - expected outcome if not treated for population A</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>B</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_0\mid B]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">]</span></span></span></span> - expected outcome if not treated for population B.</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>A</mi><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>B</mi><mo>]</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E[Y_0\mid A]-E[Y_0\mid B]=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit">A</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span></li>
+</ul>
+</li>
+<li>Just let <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">A=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">A</span><span class="mrel">=</span></span></span></span> Treated and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">B=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mrel">=</span></span></span></span> Untreated, we have 
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi></mtext><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>&#x2212;</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">
+  \text{Bias}=E[Y_0\mid T=1]-E[Y_0\mid T=0]=0.
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Bias</span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">&#x2212;</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span></span></span></span></span></li>
+<li>Confounding: DAGs: <ul>
+<li><strong>Directed Acyclic Graph (DAG)</strong> are very useful for casual questions and help to identify confounding and other biases.</li>
+<li>Graph = some points connected by lines</li>
+<li>Directed = those lines are arrows that indicate causation</li>
+<li>Acyclic: cannot follow arrows to get back where it is started. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Module4.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Module 4 A Useful Equation">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Module 5 Biases and Noises","level":"1.1.4","depth":2,"previous":{"title":"Module 4 A Useful Equation","level":"1.1.3","depth":2,"path":"Module4.md","ref":"Module4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module5.md","mtime":"2023-09-18T16:29:47.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-18T16:30:58.008Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
