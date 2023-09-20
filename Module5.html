@@ -312,6 +312,89 @@
 </ul>
 </li>
 </ul>
+<h2 id="review-of-terms">Review of Terms</h2>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">E</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi></mtext><mo>=</mo><mtext><mi mathvariant="normal">E</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mtext><mo>+</mo><mtext><mi mathvariant="normal">B</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">s</mi></mtext><mo>+</mo><mtext><mi mathvariant="normal">N</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi></mtext></mrow><annotation encoding="application/x-tex">
+\text{Estimate}=\text{Estimand}+\text{Bias}+\text{Noise}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Estimate</span></span><span class="mrel">=</span><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Estimand</span></span><span class="mbin">+</span><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Bias</span></span><span class="mbin">+</span><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Noise</span></span></span></span></span></span></p>
+<ul>
+<li>Terms<ul>
+<li><strong>Estimate</strong>: what we see in the data</li>
+<li><strong>Estimand</strong>: what we are interested in knowing about</li>
+<li><strong>Estimator</strong>: the procedure we use to generate our estimate</li>
+<li><strong>Bias</strong>: Systematic error in estimate</li>
+<li><strong>Noise</strong>: Random error in estimate</li>
+</ul>
+</li>
+<li>Properties of Estimators:<ul>
+<li><strong>Unbiasedness</strong>: An estimator is <em>unbiased</em> if, by repeating our estimation procedure over and over again an infinite number of times, the average value of our estimates would equal the estimand. </li>
+<li><strong>Precision</strong>: An estimator is <em>precise</em> if, by repeating our estimation procedure over and over again, the various estimates would be close to each other. <ul>
+<li>Precision is a relative term (need to compare).</li>
+<li>The more consistent the hypothetical estimates from repeating the estimator, the more precise the estimate.</li>
+</ul>
+</li>
+<li><strong>Efficiency</strong>: An estimate/estimator is <em>efficient</em> if, by repeating our estimation procedure over and over again, the various estimates would be close to the estimand on average. <ul>
+<li>The closer to the estimand, the more efficient the estimate </li>
+<li>The combination of unbiasedness and precision imply efficiency, although an estimate can be efficient but biased, unbiased but inefficient, unbiased but imprecise, precise but biased, etc. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="law-of-large-numbers-lln">Law of Large Numbers (LLN)</h2>
+<ul>
+<li><strong>Law of Large Numbers (LLN)</strong>: The sample average can be arbitrarily close to the true population average by making the sample large enough. <ul>
+<li>This implies that the average estimators (both full sample and discard 1 and take average) are unbiased.</li>
+<li>The speed by which they converge is the difference in efficiency. </li>
+<li>LLN ensures convergence when taking average of a large number of sample sizes. </li>
+</ul>
+</li>
+<li>Consistent Estimators:<ul>
+<li><strong>Consistency</strong>: An estimate/estimator is <em>consistent</em> if it converges exactly to the estimand as the sample size grows to infinity.<ul>
+<li>Estimators can be biased (for a finite sample size) but consistent. </li>
+<li>They could also be unbiased but inconsistent, although this is less common. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="statistical-inference-and-noise">Statistical Inference and Noise</h2>
+<blockquote>
+<p><strong>Standard Error</strong>: the <em>standard error</em> is the stand deviation of the sampling distribution of our estimator.</p>
+<ul>
+<li>Standard error measures: if we repeated our estimator an infinite number of time, how far would it be from the true estimand on average? </li>
+<li>If the estimator is unbiased, standard error tells us how far our estimate is from the truth in espectation.</li>
+<li>If our estimator is biased, then the standard error may not be particularly interesting, but it still gives us a measure of precision. <ul>
+<li>Everything has a standard error:</li>
+</ul>
+</li>
+<li>All <strong>estimates/statistics</strong> (numbers derived from samples from a population):<ul>
+<li>Single continuous measures (e.g. sample mean)</li>
+<li>Single proportions (e.g. sample proportion)</li>
+<li>Differences and ratio of proportions and continuous measures</li>
+<li>Associations and measures of correlation</li>
+<li>Regression coefficients</li>
+</ul>
+</li>
+<li>All are noisy</li>
+<li>All have variability</li>
+<li>All have a standard error, but with a different formula<ul>
+<li>Analytic Standard Error for a Proportion: </li>
+</ul>
+</li>
+<li>Suppose the sample size is <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> and the outcome is a proportion <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">p</span></span></span></span>, the standard error is approximately equal to 
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><mfrac><mrow><mi>p</mi><mo>(</mo><mn>1</mn><mo>&#x2212;</mo><mi>p</mi><mo>)</mo></mrow><mrow><mi>N</mi></mrow></mfrac></mrow></msqrt><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">
+  \sqrt{\dfrac{p(1-p)}{N}}.
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.70439em;"></span><span class="strut bottom" style="height:2.44003em;vertical-align:-0.73564em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord sqrt"><span class="sqrt-sign" style="top:-0.21439000000000008em;"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing size3">&#x221A;</span></span></span><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span><span class="mord displaystyle textstyle cramped"><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">p</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">&#x2212;</span><span class="mord mathit">p</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span><span style="top:-1.62439em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span><span class="reset-textstyle textstyle uncramped sqrt-line"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:1em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mord mathrm">.</span></span></span></span></span></li>
+<li>Bigger sample -&gt; Lower standard error</li>
+<li>Less underlying variation -&gt; smaller standard error<ul>
+<li>Subtleties: We don&apos;t know <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">p</span></span></span></span>! </li>
+</ul>
+</li>
+<li>We can use our estimate (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>p</mi></mrow><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle cramped"><span class="mord mathit">p</span></span></span><span style="top:0em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body"><span>^</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span>) of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">p</span></span></span></span> from the survey/sample to substitude for <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">p</span></span></span></span>.</li>
+<li>Problems arise if <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> is really small/or <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">p</span></span></span></span> is really close to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span> or <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>.</li>
+<li>Problem is that our estimate <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>p</mi></mrow><mo>^</mo></mover></mrow><annotation encoding="application/x-tex">\hat{p}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord textstyle cramped"><span class="mord mathit">p</span></span></span><span style="top:0em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body"><span>^</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span> is misleading. </li>
+</ul>
+</blockquote>
 
                                 
                                 </section>
@@ -351,7 +434,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Module 5 Biases and Noises","level":"1.1.4","depth":2,"previous":{"title":"Module 4 A Useful Equation","level":"1.1.3","depth":2,"path":"Module4.md","ref":"Module4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module5.md","mtime":"2023-09-18T16:29:47.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-18T16:30:58.008Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Module 5 Biases and Noises","level":"1.1.4","depth":2,"previous":{"title":"Module 4 A Useful Equation","level":"1.1.3","depth":2,"path":"Module4.md","ref":"Module4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module5.md","mtime":"2023-09-20T15:15:49.264Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-20T15:16:07.191Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
