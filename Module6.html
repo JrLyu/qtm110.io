@@ -368,7 +368,246 @@ where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>
 <li>Take away: Large effects (differences between null and observed data) and/or low SEs/high precision for bigger <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span>, and thus lower p-values.</li>
 </ul>
 </li>
-<li>Computational Approach: Permutation Tests</li>
+<li>Computational Approach: Permutation Tests<ul>
+<li>Condition: we have a bunch of data with a treatment value and an outcome value. </li>
+<li>Key point: This is akin to saying our null - that the treatment doesn&apos;t affect the outcome - is true since the outcomes will be distributed randomly in each exposure/treatment group.</li>
+<li>Do this, say 1000 times (permutations). Simulating 1000 experiments in a world where the null (no affect of exposure on outcome) is true.</li>
+<li>Compare the distribution of these estimates to our observed estimate:<ul>
+<li>p-value: proportion of permutations that yield an estimate &quot;more extreme&quot; than your observed estimate</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Summary:<ul>
+<li>Everything has noise: even randomized experiments</li>
+<li>Quantify with SE: lower with larger <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span>, less outcome variance</li>
+<li>Use SE to calculate confidence interval (CI) - range of values of truth that would be consistent with the estimate</li>
+<li>May also calculate p-value to compare the estimate to a single hypothetical value of the truth (the null hypothesis)</li>
+</ul>
+</li>
+</ul>
+<h2 id="types-of-experiments">Types of Experiments</h2>
+<ul>
+<li>Experiments = Random Assignment<ul>
+<li>Random assignment of units into treatment group and non-treatment group (the control group)</li>
+<li>Multi Arm Experiments: multiple treatments in a single experiment</li>
+</ul>
+</li>
+<li>Observational studies = non-random assignment: based on observed treatments, outcomes, and behavior in the world. </li>
+<li>Stratification and Randomization<ul>
+<li>Think of randomization as a computer selecting a random number with treatment allocation based on the number<ul>
+<li>Lowest half of the random numbers -&gt; treatment</li>
+<li>Upper half of random numbers -&gt; Control</li>
+</ul>
+</li>
+<li>Sometimes, randomization is done by observable characteristics like gender to ensure balance -&gt; Stratified randomization<ul>
+<li><strong>Stratified Randomization</strong>: split subjects/units by one or a few factors, then randomize withint those strata<ul>
+<li>Done to ensure better balance on stratification variables</li>
+<li>Usually choose expected strong confounders for stratification</li>
+<li>Maximize efficiency for studying how effect varies across group</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Types of Experiments<ul>
+<li>Lab: classical model of experiments and include bench experiments (Physics, Chemistry, and Biology) and social Laboratories (Psychology, Sociology, Economics, and Political Sciences)</li>
+<li>Field: similar to lab experiments, but instead of being carried out in a lab, experimenters manipulate a treatment in the real world. <ul>
+<li>Often called a Randomized Control Trial (RCT)</li>
+</ul>
+</li>
+<li>Lab in the Field</li>
+<li>Quasi or Natural Experiments:<ul>
+<li>Sometimes, institutions in the world create assignments that are random or close to random</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Why do experiments?<ul>
+<li>Randomization solves problem of causal inference</li>
+<li>Rule out reverse causality: experimenter know that random chance controls treatment</li>
+<li>Rule out common cause (confounding, omitted variable)<ul>
+<li>Randomness means there should be no differences between groups</li>
+<li>This is true on average, so sample size and variance matter. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Randomization Eliminates Confounding<ul>
+<li>If exposure is randomized, and therefore dependent only on chance, and therefore on average (in large samples) treatment and control will be very similar, then the groups&apos; counterfactual outcomes shouldn&apos;t vary on average. That is,
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><mn>0</mn><mi>i</mi></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><mn>0</mn><mi>i</mi></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mspace width="1em"></mspace><mtext><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">d</mi></mtext><mspace width="1em"></mspace><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><mn>1</mn><mi>i</mi></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mrow><mn>1</mn><mi>i</mi></mrow></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">
+  E[Y_{0i}\mid T=0]=E[Y_{0i}\mid T=1]\quad\text{and}\quad E[Y_{1i}\mid T=1]=E[Y_{1i}\mid T=0].
+  </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span><span class="mord mathit mtight">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span><span class="mord mathit mtight">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mord text displaystyle textstyle uncramped"><span class="mspace quad"></span><span class="mord mathrm">and</span></span><span class="mord mathit"><span class="mspace quad"></span><span class="mord mathit" style="margin-right:0.05764em;">E</span></span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span><span class="mord mathit mtight">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span><span class="mord mathit mtight">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mord mathrm">.</span></span></span></span></span></li>
+<li>Then, we have apples-to-apples comparison</li>
+<li>Have no (bias due to) confounding</li>
+<li>Treatment and control groups are exchangeable (can stand in for) one another</li>
+<li>Treatment and control groups are balanced on all convariates/characteristics</li>
+<li>End Result: can get unconfounded ATE (or ATT)</li>
+</ul>
+</li>
+</ul>
+<h2 id="treats-to-internal-validity">Treats to Internal Validity</h2>
+<blockquote>
+<p><strong>Fundamental Principle of Controlled Experiments</strong>: Actual Outcomes among the control group can stand in for (i.e., are the same) counterfactual outcomes of the treated group</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mrow><mn>1</mn><mi>i</mi></mrow></msub><mo>&#x2212;</mo><msub><mi>Y</mi><mrow><mn>0</mn><mi>i</mi></mrow></msub></mrow><annotation encoding="application/x-tex">Y_{1i}-Y_{0i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span><span class="mord mathit mtight">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span><span class="mord mathit mtight">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> is the individual causal effect - Never observed directly</li>
+<li>In an exmperimental study, we let the outcome of the control group substitude fro this unobserved outcome.</li>
+<li>This works because randomness implies <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">E[Y_0\mid T=1]=E[Y_0\mid T=0].</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span><span class="mord mathrm">.</span></span></span></span><ul>
+<li>The concept of <strong>Internal Validity</strong> is about assessing how close <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_0\mid T=1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span></span> is to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_0\mid T=0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span></span></span></span></li>
+<li>Things can go wrong in an experiment</li>
+</ul>
+</li>
+<li>Chance imbalance<ul>
+<li>If assignment between control and treatment is random, then we would expect that on average the groups should be the same on observable characteristics.<ul>
+<li>It won&apos;t be exactly the same since by chance we expect some difference</li>
+<li>With large samples we would expect more similarity between control and treatment</li>
+</ul>
+</li>
+<li>We cannot check the unobservable, but if there are balances in observable then we can be reasonably confident unobservable are balanced as well. </li>
+<li>Balance Checks at the end of research papers</li>
+<li>Randomization guarantees balance of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">Y_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">Y_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>, and all pre-treatment covariates in expectation. However, imbalances occur by chance from time to time.<ul>
+<li>We might find significant imbalance in a pre-treatment covariate that we expect is strongly related to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">Y_0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>Y</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">Y_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span></span></span></span>.</li>
+</ul>
+</li>
+<li>Ex-ante: anticipate import confounder, stratify on them<ul>
+<li>Create categories and then randomize with categories</li>
+</ul>
+</li>
+<li>Ex-post: 3 different responses:<ul>
+<li>Throw out the broken experiment.<ul>
+<li>Had good intentions when running the experiment, but got unlucky and now cannot trust the estimates.</li>
+<li>If we test enough covariates, we are virtually guaranteed to find imbalance on some of them.</li>
+<li>Therefore, by logic, we have to throw out all experiments.</li>
+<li>Even broken and imprecise experiments contain some information. <ul>
+<li>They are unbiased in expectation, and they could be pooled with other evidence, incorporated into a meta-analysis, etc. that will later contribute to knowledge. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Proceed as normal.<ul>
+<li>Unbiasedness is a property &quot;in expectation&quot;</li>
+<li>Report the imbalance in the paper, but still report the same estimate that originally planned</li>
+</ul>
+</li>
+<li>Condition on that <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> variable in order to account for the imbalance and get a more efficient estimate. <ul>
+<li>Compare the experimental effects within groups sharing the same level of the unbalanced observable.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Lack of statistical power<ul>
+<li><strong>Statistical power</strong>: the ability to detect a true effect if one exists.</li>
+<li>The smaller the effect size relative to other sources of variance, the more observations we need to conclude there is an effect at any p-value threshold. <ul>
+<li>Less noise -&gt; more precision/power<ul>
+<li>Larger <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> -&gt; more power</li>
+<li>If a study is too small, it may be underpowered to detect small-to-moderate causal effects. That is, they&apos;ll be swamped by noise and won&apos;t get a significant result.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Non-compliance<ul>
+<li>Subjects will fail to take the treatment</li>
+<li>Untreated subject will find a way to take it anyway.</li>
+<li>Define <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">Z</span></span></span></span> as the experimental condition (assignment to treatment) and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> as the actual treatment of interest.Randomization guaranttess that <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>Z</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>Z</mi><mo>=</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_0\mid Z=1]=E[Y_0\mid Z=0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.07153em;">Z</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.07153em;">Z</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span></span></span></span>, but when there is noncompliance, it does not say that <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>1</mn><mo>]</mo><mo>=</mo><mi>E</mi><mo>[</mo><msub><mi>Y</mi><mn>0</mn></msub><mo>&#x2223;</mo><mi>T</mi><mo>=</mo><mn>0</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">E[Y_0\mid T=1]=E[Y_0\mid T=0]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mrel">&#x2223;</span><span class="mord mathit" style="margin-right:0.13889em;">T</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mclose">]</span></span></span></span> because <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">Z</span></span></span></span> is random but <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span> might not be. </li>
+<li>Average effect of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">Z</span></span></span></span> for the whole sample: intent-to-treat effect (ITT).</li>
+</ul>
+</li>
+<li>Placebo effects<ul>
+<li>Individuals assigned to treatment often know they are part of an experiment, they know they will be recorded to see how they are doing.</li>
+<li>We need a good logical reason to believe that these incidental things could cause the observed effect. </li>
+<li>Placebo group in a double blinded experiment: randomly select a third group that gets everything but the actual treatment<ul>
+<li>Three groups: treatment, control, placebo<ul>
+<li>If the effect is really due to the treatment, should see it in the treated group and not the placebo group.</li>
+<li>Measure (Treated - Control), (Placebo - Control)</li>
+<li>True effect is (Treated - Control) - (Placebo - Control)</li>
+<li>Most often: just compare treated to placebo </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Attrition<ul>
+<li>Suppose that some units drop out of the analysis after randomization, and we cannot observe their outcomes.<ul>
+<li>If we are confident that the attrition is random, then we can still estimate the averate effect.</li>
+<li>If the attrition is non-random but unrelated to the treatment, then we can estimate the average effect of the treatment for those that stayed in the sample. </li>
+<li>Most of the time, we are left worrying that attrition was nonrandom and influenced by the treatment. </li>
+</ul>
+</li>
+<li>The biggest challenge of attribution is that when people drop out, we don&apos;t know what type of drop out they are.</li>
+</ul>
+</li>
+<li>Interference<ul>
+<li>For field experiments: is it realistic to assume control and treatment are not in contact?</li>
+<li>Two forms of interference: Contamination and Spillovers. </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="external-validity">External Validity</h2>
+<ul>
+<li><strong>External Validity</strong>: to what populations, settings, treatment variables and measurement variables can this effect be generalized? <ul>
+<li>Internal validity concerns the design and outcome of an experiment</li>
+<li>External validity concerns if the effect can be generalized to other settings. </li>
+</ul>
+</li>
+<li>Threats to external validity:<ul>
+<li>Experimental Effect<ul>
+<li>People are responding to experimenters&apos; implicit demands/hopes</li>
+<li>Experimenters believe they are testing <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span></span>, but subjects are responding to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">Z</span></span></span></span>. </li>
+</ul>
+</li>
+<li>Heterogeneity<ul>
+<li>Population in experiment has different (heterogeneous) response than population in general</li>
+</ul>
+</li>
+<li>Adaption</li>
+</ul>
+</li>
+<li>Improving external validity:<ul>
+<li>Make sure experimental population is representative, or at least representative of the populations/paces where we might want to generalize the effect to. </li>
+<li>Look at subpopulations to look for heterogeneous effects</li>
+</ul>
+</li>
+<li>Ethics:<ul>
+<li>Quest for external validity leads us to want to match experimental conditions as closely as possible to those in the real world. However, we might not always want to match real world conditions because that would involve causing harm. </li>
+</ul>
+</li>
+</ul>
+<h2 id="ethics">Ethics</h2>
+<ul>
+<li>Obvious Case: First, do no harm<ul>
+<li>strictly prohibited to give subjects a disease/condition in order to study treatments</li>
+<li>More obvious case: strictly prohibited to give subjects a disease in order to study treatment or disease progression without consent. </li>
+</ul>
+</li>
+<li>Causing Harm<ul>
+<li>Beyond medicine, any treatment that involves causing direct harm to treated subjects is clearly unethical. </li>
+</ul>
+</li>
+<li>Gray Areas:<ul>
+<li>Side effects<ul>
+<li>Justifiable for treatments known to work.</li>
+<li>But if we are experimenting, we don&apos;t know they work -&gt; require an initial phase of experimentation in vitro or on animal subjects to establish reasonable belief of efficacy.</li>
+</ul>
+</li>
+<li>Placebos:<ul>
+<li>If treatment works, is withholding it from the control group unethical? -&gt; require continuous monitoring, stop experiment if it&apos;s obviously effective.</li>
+</ul>
+</li>
+<li>Other:<ul>
+<li>Subjects are exposing themselves to risk</li>
+<li>Conditional Cash Transfers: why not divide the money and give that to the control group</li>
+<li>Teacher quality: What is our role in determining who gets a good or a bad teacher? </li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -411,7 +650,7 @@ where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Module 6 Experiments","level":"1.1.5","depth":2,"previous":{"title":"Module 5 Biases and Noises","level":"1.1.4","depth":2,"path":"Module5.md","ref":"Module5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module6.md","mtime":"2023-09-26T14:04:33.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-26T14:04:40.078Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Module 6 Experiments","level":"1.1.5","depth":2,"previous":{"title":"Module 5 Biases and Noises","level":"1.1.4","depth":2,"path":"Module5.md","ref":"Module5.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module6.md","mtime":"2023-10-02T16:41:58.377Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-10-02T16:42:17.415Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
