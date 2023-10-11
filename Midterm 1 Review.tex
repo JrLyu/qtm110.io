@@ -1,0 +1,305 @@
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathtools, amssymb, amsmath, cleveref, fancyhdr, geometry, tcolorbox, graphicx, float, subfigure, arydshln, url, setspace, framed, pifont, physics, ntheorem, utopia, multicol}
+
+\geometry{letterpaper, left=1.25cm, right=1.25cm, bottom=1.5cm, top=1.25cm}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[C]{\textbf{Page\ \thepage\ of\ \ \pageref{LastPage}}}
+%\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\hypersetup{
+	colorlinks = true,
+	bookmarks = true,
+	bookmarksnumbered = true,
+	pdfborder = 001,
+	linkcolor = blue
+}
+
+\newcounter{index}[section]
+\setcounter{index}{0}
+\newenvironment*{eg}{\begin{framed}\par\noindent\textbf{Example \thesection.\stepcounter{index}\theindex}}{\par\end{framed}}
+
+\newtheorem*{hint}{Hint.}
+\newtheorem*{rmk}{Remark.}
+
+\linespread{1}
+
+\title{\textbf{QTM 110 Midterm 1 Review}}
+
+\def\E{\vb E}
+\def\Var{\vb{Var}}
+\def\ATT{\mathrm{ATT}}
+\def\ATE{\mathrm{ATE}}
+\def\ATU{\mathrm{ATU}}
+\def\Bias{\mathrm{Bias}}
+\def\Noise{\mathrm{Noise}}
+\def\SE{\mathrm{SE}}
+\def\CI{\mathrm{CI}}
+
+\begin{document}
+\newpage
+\begin{multicols}{2}
+\thispagestyle{plain}
+
+\subsection*{QTM 101 Midterm 1 Cheat Sheet}
+\subsection*{Section 1, 10am-11:15am, Wed, Oct 4$^\text{th}$, 2023}
+\subsection*{Name: Jiuru Lyu}
+
+\section*{Types of Questions}
+\begin{itemize}
+	\item \underline{Descriptive}: Something we can \textbf{see} in the data.
+	\item \underline{Predictive}: What the \textbf{future} might look like
+	\item \underline{Causal}: If $X$ changes, will $Y$ change? 
+\end{itemize}
+
+\section*{Strength vs. Magnitude}
+\begin{itemize}
+	\item Covariance: retain units
+	\item Correlation ($r$): standardized covariance $\Rightarrow r\in[-1,1]$
+	\begin{itemize}
+		\item Sign: direction
+		\item Absolute Value: strength
+	\end{itemize}
+	\item Regression coefficient ($\beta$): magnitude $\rightarrow y=\beta x+\alpha$.
+\end{itemize}
+All of them should have the same sign: all positive if $y$ increases when $x$ increases; all negative if $y$ decreases when $x$ increases. 
+\begin{itemize}
+	\item Covariance isn't actually telling us anything because they retain units - they cannot be used in comparison! 
+	\item Determine which is the most \textbf{predictive}? (\textit{\textbf{strength}, so we should use correlation coefficient})
+	\item Determine which is the most effective \textbf{chance}? (\textit{\textbf{magnitude}, so we should consider the regression coefficient})
+\end{itemize}
+
+\section*{Counterfactual Dependence}
+\begin{itemize}
+	\item We need to prove both: (1) when $X$ happens, $Y$ happens; and (2) when $X$ does not happen, $Y$ does not happen. 
+	\item Some notations:
+	\begin{itemize}
+		\item $T=0$: control, untreated
+		\item $T=1$: treatment, treated
+		\item $Y_1$: outcome if treated
+		\item $Y_0$: outcome if untreated
+	\end{itemize}
+	\item Fundamental problem of casual inference: We cannot observe $\ATT$ (Average Treatment Effect of Treated) anyhow!  \[\ATT=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=1],\] where $\E\qty[Y_0\mid T=1]$ is not observable because we cannot have the same group be both treated and untreated.  
+	\item Resolution: Estimate the $\ATT$: \[\widehat{\ATT}=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=0],\] where both $\E\qty[Y_1\mid T=1]$ and $\E\qty[Y_0\mid T=0]$ are observable.
+	\item An important equation \[\underbrace{\boxed{\textrm{Estimate}}}_\text{what we see in data}=\underbrace{\boxed{\textrm{Estimand}}}_\text{what we want to know}+\textrm{Bias}+\textrm{Noise},\] where possible $\mathrm{Estimand}$'s are (remember that $\mathrm{Estimand}$'s are unobservable true values in our experiment)
+	\begin{itemize}
+		\item $\ATE=\E[Y_1]-\E[Y_0]$
+		\item $\ATT=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=1]$
+		\item $\ATU=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=0]$
+	\end{itemize}
+	The only observable effect ($\mathrm{Estimate}$) is \[\widehat{\ATE}=\widehat{\ATT}=\widehat{\ATU}=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=0]\]
+	\item Following up, we use $\ATT$ to represent our general $\mathrm{Estimand}$ and $\widehat{\ATT}$ as our $\mathrm{Estimate}$.
+\end{itemize}
+
+\section*{Identifying Inferential Errors}
+\begin{itemize}
+	\item \underline{Selecting on the DV}: Only one \textbf{outcome} in data
+	\item \underline{Confounder/Common Cause}: \textbf{omitted variable} (We are not comparing apples to apples)
+\end{itemize}
+
+\section*{Bias and Noise}
+\begin{itemize}
+	\item \underline{Bias}: Systematic error; Not apples-to-apples; Inaccuracy \[\Bias=\E[Y_0\mid T=1]-\E[Y_0\mid T=0]\]
+	\begin{itemize}
+		\item To measure $\Bias$, we give the two groups Placebo (however, bias is still unobservable). 
+		\item Eliminating bias: \textbf{randomization}.
+	\end{itemize}
+	\item Law of Large Numbers (LLN): the sample average can be arbitrarily close to the true population average by making the sample large enough. 
+	\item \underline{Noise}: Random error; $\E\qty[\mathrm{Noise}=0]$; Imprecision
+	\begin{itemize}
+		\item Everything is noisy.
+		\item Measured by \underline{standard error} \[\SE=\sqrt{\frac{p(1-p)}{N}},\quad p=\text{porportion of outcome}\]
+		\item If we repeat our experiment for enough times, our $\mathrm{Noise}$ should be $0$.
+		\item We are not super stressful with $\mathrm{Noise}$ since the solution is to increase sample size. 
+	\end{itemize}
+\end{itemize}
+
+\section*{Confidence Interval and $p$-values}
+\begin{itemize}
+	\item \underline{Point Estimate} (=$\widehat{\ATT}$) $\xrightarrow[\pm 2\times\SE]{\text{MATH}}95\%\ \CI$
+	\begin{itemize}
+		\item If we run the experiment identically $100$ times, $95$ of them should contain the true value of the estimand. 
+		\item When we have $99\%\ \CI$, then we should find larger intervals. 
+	\end{itemize}
+	\item Interpreting a $\CI$: Sign and Magnitude (every important if the interval contains $0$).
+	\begin{itemize}
+		\item $\widehat{\ATT}=10;\ 95\%\ \CI=\qty[6,14]$: If we run the experiment identically $100$ times and calculation the confidence interval in each repetition, out of $95$ times, we are confident that $\qty[6,14]$ captures the $\ATT$. Furthermore, $\ATT$ is likely \textbf{positive} and has a \textbf{large magnitude}. 
+		\item $\widehat{\ATT}=3;\ 95\%\ \CI=\qty[-2, 8]$: If we run the experiment identically $100$ times, and we calculate the confidence interval in each repetition, out of $95$ times, we are confident that the interval $[-2, 8]$ captures the $\ATT$. However, $\ATT$ \textbf{sign is unclear} and has a \textbf{small magnitude}.
+	\end{itemize}
+	\item Central Limit Theorem: If we repeat a study/analysis/experiment a zillion times, the value of many of the statistics we get will follow a \underline{normal distribution}.
+	\item \underline{Null Hypothesis}: $\ATT=0$. ($\Rightarrow$ Any nonzero $\widehat{\ATT}$ is due to noise)
+	\begin{itemize}
+		\item \textbf{Fail to reject the null}: $\widehat{\ATT}$ could be due to noise
+		\item \textbf{Reject the null}: $\widehat{\ATT}$ is probably not due to noise
+	\end{itemize}
+	\item $p$-values: 
+	\begin{itemize}
+		\item High $p$-value $\rightarrow$ \textbf{High} chance of observing if $\ATT=0$ $\rightarrow$ \textbf{fail to reject} the null $\rightarrow$ $\ATT$ could \textbf{reasonably} be $0$.
+		\item Low $p$-value $\rightarrow$ \textbf{Low} chance of observing if $\ATT=0$ $\rightarrow$ \textbf{reject} the null $\rightarrow$ $\ATT$ is \textbf{unlikely} be $0$.
+	\end{itemize}
+	\item Threshold of $p$-values: $0.05$
+	\item Connecting $p$-values and $\CI$'s
+	\begin{itemize}
+		\item $\widehat{\ATT}=5;\ 95\%\ \CI=\qty[-1,11];\ p\text{-value}=0.13$: \textbf{fail to reject} the null, $\ATT$ could \textbf{reasonably} be $0$ (the result could be due to noise).
+		\item $\widehat{\ATT}=5;\ 95\%\ \CI=\qty[2,8];\ p\text{-value}=0.03$: \textbf{reject} the null, $\ATT$ is \textbf{unlikely} be $0$ (the result is not due to noise).
+	\end{itemize}
+\end{itemize}
+
+\section*{Experiments}
+\begin{itemize}
+	\item Random Assignment
+	\begin{itemize}
+		\item \underline{Observational studies}: non-random assignment; based on observed treatments in the world
+		\item \underline{Randomization}: a computer selecting random number to allocate treatment
+		\item \underline{Stratified Randomization}: split subjects by one or few factors then randomize within those strata
+	\end{itemize}
+	\item Types of experiment:
+	\begin{itemize}
+		\item \underline{Lab}: classical model of experiment
+		\item \underline{Field}: experimenter manipulate a treatment in the real world. -\textit{Randomized Control Trial (RCT)}
+		\item \underline{Lab in the Field}
+		\item \underline{Quasi or Natural Experiments}
+	\end{itemize}
+	\item Fundamental Principle of Controlled Experiment: Actual outcomes among the control group should give the same counterfactual outcomes of the treated groups
+	\item Internal Validity: how close $\E[Y_0\mid T=1]$ is to $\E[Y_0\mid T=0]$.
+	\begin{itemize}
+		\item \underline{Chance imbalance}: check the balance in observables. 
+		\begin{itemize}
+			\item throw out broken experiment
+			\item proceed as normal
+			\item compare the experimental effects within groups sharing the same level of unbalanced observable
+		\end{itemize}
+		\item \underline{Lack of statistical power}: larger sample size $\rightarrow$ less noise $\rightarrow$ more statistical power (=ability to detect a true effect if one exists)
+		\item \underline{Non-compliance}: subjects fail to take the treatment
+		\begin{itemize}
+			\item Intent-to-treat effect (ITT)
+		\end{itemize}
+		\item \underline{Placebo effects}: individuals know they are part of the experiment and will be recorded.
+		\begin{itemize}
+			\item Double blinded experiments
+			\item Three groups: treatment, control, placebo; compare measure $(T-C)$ and $(P-C)$, then true effect is $(T-C)-(P-C)$. Or simply compare T to C.
+		\end{itemize}
+		\item \underline{Attrition}: some subjects drop out of the analysis after randomization, and we cannot observe their outcomes. 
+		\begin{itemize}
+			\item confident that attrition is random: still estimate the average effect.
+			\item attrition is non-random but unrelated to treatment: estimate the average effect for those stayed in sample
+			\item attrition is non-random and related to treatment
+		\end{itemize}
+		\item \underline{Interference}: control and treatment are in contact
+		\begin{itemize}
+			\item Contamination
+			\item Spillovers
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\thispagestyle{plain}
+\end{multicols}
+
+
+
+\maketitle\thispagestyle{fancy}
+\section{Types of Questions}
+\begin{itemize}
+	\item \underline{Descriptive}: Something we can \textbf{see} in the data.
+	\item \underline{Predictive}: What the \textbf{future} might look like
+	\item \underline{Causal}: If $X$ changes, will $Y$ change? 
+\end{itemize}
+
+\section{Strength vs. Magnitude}
+\begin{itemize}
+	\item Covariance: retain units
+	\item Correlation ($r$): standardized covariance $\Rightarrow r\in[-1,1]$
+	\begin{itemize}
+		\item Sign: direction
+		\item Absolute Value: strength
+	\end{itemize}
+	\item Regression coefficient ($\beta$): magnitude $\rightarrow y=\beta x+\alpha$.
+\end{itemize}
+All of them should have the same sign: all positive if $y$ increases when $x$ increases; all negative if $y$ decreases when $x$ increases. 
+\begin{itemize}
+	\item Covariance isn't actually telling us anything because they retain units - they cannot be used in comparison! 
+	\item Determine which is the most \textbf{predictive}? (\textit{\textbf{strength}, so we should use correlation coefficient})
+	\item Determine which is the most effective \textbf{chance}? (\textit{\textbf{magnitude}, so we should consider the regression coefficient})
+\end{itemize}
+
+\section{Counterfactual Dependence}
+\begin{itemize}
+	\item We need to prove both: (1) when $X$ happens, $Y$ happens; and (2) when $X$ does not happen, $Y$ does not happen. 
+	\item Some notations:
+	\begin{itemize}
+		\item $T=0$: control, untreated
+		\item $T=1$: treatment, treated
+		\item $Y_1$: outcome if treated
+		\item $Y_0$: outcome if untreated
+	\end{itemize}
+	\item Fundamental problem of casual inference: We cannot observe $\ATT$ (Average Treatment Effect of Treated) anyhow!  \[\ATT=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=1],\] where $\E\qty[Y_0\mid T=1]$ is not observable because we cannot have the same group be both treated and untreated.  
+	\item Resolution: Estimate the $\ATT$: \[\widehat{\ATT}=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=0],\] where both $\E\qty[Y_1\mid T=1]$ and $\E\qty[Y_0\mid T=0]$ are observable.
+	\item An important equation \[\boxed{\textrm{Estimate}}=\boxed{\textrm{Estimand}}+\textrm{Bias}+\textrm{Noise},\] where possible $\mathrm{Estimand}$'s are (remember that $\mathrm{Estimand}$'s are unobservable true values in our experiment)
+	\begin{itemize}
+		\item $\ATE=\E[Y_1]-\E[Y_0]$
+		\item $\ATT=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=1]$
+		\item $\ATU=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=0]$
+	\end{itemize}
+	The only observable effect ($\mathrm{Estimate}$) is \[\widehat{\ATE}=\widehat{\ATT}=\widehat{\ATU}=\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=0]\]
+	\item Following up, we use $\ATT$ to represent our general $\mathrm{Estimand}$ and $\widehat{\ATT}$ as our $\mathrm{Estimate}$.
+\end{itemize}
+
+\section{Identifying Inferential Errors}
+\begin{itemize}
+	\item \underline{Selecting on the DV}: Only one \textbf{outcome} in data
+	\item \underline{Confounder/Common Cause}: \textbf{omitted variable} (We are not comparing apples to apples)
+\end{itemize}
+
+\section{Bias and Noise}
+\begin{itemize}
+	\item \underline{Bias}: Systematic error; Not apples-to-apples; Inaccuracy \[\Bias=\E[Y_0\mid T=1]-\E[Y_0\mid T=0]\]
+	\begin{itemize}
+		\item To measure $\Bias$, we give the two groups Placebo (however, bias is still unobservable). 
+		\item Eliminating bias: \textbf{randomization}.
+	\end{itemize}
+	\item \underline{Noise}: Random error; $\E\qty[\mathrm{Noise}=0]$; Imprecision
+	\begin{itemize}
+		\item If we repeat our experiment for enough times, our $\mathrm{Noise}$ should be $0$.
+		\item We are not super stressful with $\mathrm{Noise}$ since the solution is to increase sample size. 
+	\end{itemize}
+\end{itemize}
+
+\section{Confidence Interval and $p$-values}
+\begin{itemize}
+	\item \underline{Point Estimate} (=$\widehat{\ATT}$) $\xrightarrow[\pm 2\times\SE]{\text{MATH}}95\%\ \CI$
+	\begin{itemize}
+		\item If we run the experiment identically $100$ times, $95$ of them should contain the true value of the estimand. 
+		\item When we have $99\%\ \CI$, then we should find larger intervals. 
+	\end{itemize}
+	\item Interpreting a $\CI$: Sign and Magnitude (every important if the interval contains $0$).
+	\begin{itemize}
+		\item $\widehat{\ATT}=10;\ 95\%\ \CI=\qty[6,14]$: If we run the experiment identically $100$ times and calculation the confidence interval in each repetition, out of $95$ times, we are confident that $\qty[6,14]$ captures the $\ATT$. Furthermore, $\ATT$ is likely \textbf{positive} and has a \textbf{large magnitude}. 
+		\item $\widehat{\ATT}=3;\ 95\%\ \CI=\qty[-2, 8]$: If we run the experiment identically $100$ times, and we calculate the confidence interval in each repetition, out of $95$ times, we are confident that the interval $[-2, 8]$ captures the $\ATT$. However, $\ATT$ \textbf{sign is unclear} and has a \textbf{small magnitude}.
+	\end{itemize}
+	\item \underline{Null Hypothesis}: $\ATT=0$. ($\Rightarrow$ Any nonzero $\widehat{\ATT}$ is due to noise)
+	\begin{itemize}
+		\item \textbf{Fail to reject the null}: $\widehat{\ATT}$ could be due to noise
+		\item \textbf{Reject the null}: $\widehat{\ATT}$ is probably not due to noise
+	\end{itemize}
+	\item $p$-values: 
+	\begin{itemize}
+		\item High $p$-value $\rightarrow$ \textbf{High} chance of observing if $\ATT=0$ $\rightarrow$ \textbf{fail to reject} the null $\rightarrow$ $\ATT$ could \textbf{reasonably} be $0$.
+		\item Low $p$-value $\rightarrow$ \textbf{Low} chance of observing if $\ATT=0$ $\rightarrow$ \textbf{reject} the null $\rightarrow$ $\ATT$ is \textbf{unlikely} be $0$.
+	\end{itemize}
+	\item Threshold of $p$-values: $0.05$
+	\item Connecting $p$-values and $\CI$'s
+	\begin{itemize}
+		\item $\widehat{\ATT}=5;\ 95\%\ \CI=\qty[-1,11];\ p\text{-value}=0.13$: \textbf{fail to reject} the null, $\ATT$ could \textbf{reasonably} be $0$ (the result could be due to noise).
+		\item $\widehat{\ATT}=5;\ 95\%\ \CI=\qty[2,8];\ p\text{-value}=0.03$: \textbf{reject} the null, $\ATT$ is \textbf{unlikely} be $0$ (the result is not due to noise).
+	\end{itemize}
+\end{itemize}
+
+\label{LastPage}
+\end{document}
