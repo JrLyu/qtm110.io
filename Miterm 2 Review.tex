@@ -1,0 +1,289 @@
+\documentclass[10pt, letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathtools, amssymb, amsmath, cleveref, fancyhdr, geometry, tcolorbox, graphicx, float, subfigure, arydshln, url, setspace, framed, pifont, physics, ntheorem, utopia, multicol}
+
+\geometry{letterpaper, left=1.25cm, right=1.25cm, bottom=1.5cm, top=1.25cm}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[C]{\textbf{Page\ \thepage\ of\ \ \pageref{LastPage}}}
+%\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\hypersetup{
+	colorlinks = true,
+	bookmarks = true,
+	bookmarksnumbered = true,
+	pdfborder = 001,
+	linkcolor = blue
+}
+
+\newcounter{index}[section]
+\setcounter{index}{0}
+\newenvironment*{eg}{\begin{framed}\par\noindent\textbf{Example \thesection.\stepcounter{index}\theindex}}{\par\end{framed}}
+
+\newtheorem*{hint}{Hint.}
+\newtheorem*{rmk}{Remark.}
+
+\linespread{1}
+
+\title{\textbf{QTM 110 Midterm 2 Review}}
+
+\def\E{\vb{E}}
+\def\Var{\vb{Var}}
+\def\P{\vb{P}}
+\def\Avg{\vb{Avg}}
+\def\ATT{\mathrm{ATT}}
+\def\ATE{\mathrm{ATE}}
+\def\ATU{\mathrm{ATU}}
+\def\Bias{\mathrm{Bias}}
+\def\Noise{\mathrm{Noise}}
+\def\SE{\mathrm{SE}}
+\def\CI{\mathrm{CI}}
+\def\OVB{\mathrm{OVB}}
+\def\LATE{\mathrm{LATE}}
+\def\CATE{\mathrm{CATE}}
+\def\ITT{\mathrm{ITT}}
+
+\begin{document}
+\newpage
+\begin{multicols}{2}
+\thispagestyle{plain}
+
+\subsection*{QTM 101 Midterm 2 Cheat Sheet}
+\subsection*{Section 1, 10am-11:15am, Wed, Nov 8$^\text{th}$, 2023}
+\subsection*{Name: Jiuru Lyu}
+
+\section*{From Midterm 1}
+\begin{itemize}
+\item $\underbrace{\boxed{\textrm{Estimate}}}_\text{what we see in data}=\underbrace{\boxed{\textrm{Estimand}}}_\text{what we want to know}+\textrm{Bias}+\textrm{Noise}$
+	\begin{itemize}
+		\item $\ATE=\E[Y_1]-\E[Y_0]$
+	\end{itemize}
+	The only observable effect ($\mathrm{Estimate}$) is $\E\qty[Y_1\mid T=1]-\E\qty[Y_0\mid T=0]$
+\item \underline{Bias}: Systematic error; Not apples-to-apples; Inaccuracy \[\Bias=\E[Y_0\mid T=1]-\E[Y_0\mid T=0]\]
+	\begin{itemize}
+		\item Eliminating bias: \textbf{randomization}.
+	\end{itemize}
+\item \underline{Noise}: Random error; $\E\qty[\mathrm{Noise}=0]$; Imprecision
+	\begin{itemize}
+		\item Everything is noisy.
+		\item Measured by \underline{standard error}
+		\item If we repeat our experiment for enough times, our $\mathrm{Noise}$ should be $0$.
+	\end{itemize}
+\end{itemize}
+
+\section*{Regression}
+\begin{itemize}
+	\item General formula: \[Y_i=\alpha+\beta T_i+\gamma V_i+r_i\]
+	\begin{itemize}
+		\item $Y$: dependent variable; $T$: independent variable/treatment; $V$: control variable/confounder
+		\item $\alpha=\E[Y_0]$: intercept
+		\item $\beta=\ATE$: slope (estimand)
+		\item $r$: error term/residual
+	\end{itemize}
+	\item Omitted Variable Bias (Confounders): 
+	\begin{itemize}
+		\item Confounders must affect treatment AND outcome
+		\item Short (uncontrolled): \[Y_i=\alpha+\beta^S T_i+r_i\]
+		\item Long (controlled): \[Y_i=\alpha+\beta^L T_i+\gamma V_i+r_i\]
+		\item Omitted Variable Bias (OVB): \[\OVB=\beta^S-\beta^L.\]
+		\item If $\beta^S$ and $\beta^L$ are negative, we compare $\qty|\beta^S|$ and $\qty|\beta^L|$. If $\qty|\beta^S|>\qty|\beta^L|$, then we overestimate the negative treatment effect. $\beta^L$ is a \textbf{less biased} estimate of the $\ATE$ than $\beta^S$.
+	\end{itemize}
+\end{itemize}
+
+\section*{Difference-in-Difference}
+\begin{itemize}
+	\item Key: Parallel Trends. Outcomes must change at the similar rates; lines should have similar slopes. 
+	\item Two approaches: Difference over time and different between subjects: Treated minus untreated; post-treatment minus pre-treatment.
+	\item Violation of parallel trends: overestimate and underestimate. 
+\end{itemize}
+
+\section*{Regression Discontinuity Design (RDD)}
+\begin{itemize}
+	\item Running variable, threshold, treatment status
+	\item Local Average Treatment Effect (LATE): \[\LATE=\E[Y_1\mid X=\text{threshold}] – \E[Y_0\mid X=\text{threshold}]\]
+	\begin{itemize}
+		\item If we change the bin, we will get different LATEs.
+		\item Different ways to get LATEs: 
+		\begin{itemize}
+			\item naïve way: choose a bin and compute the bin at both sides of the bin
+			\item local linear/polynomial: choose a window and run linear/polynomial regressions then compute the limit
+		\end{itemize}
+	\end{itemize}
+	\item Continuity Assumption: Points must have the same \textbf{potential outcomes} at the threshold. \textbf{Capacity to manipulate} treatment assignment cannot be related to outcome.
+\end{itemize}
+
+\section*{Noncompliance and Instrument}
+\begin{itemize}
+	\item Types of Populations:
+	\begin{itemize}
+		\item Always Takers
+		\item Compliers: What we are interested in. 
+		\item Never Takers
+		\item Defiers: we assume there are no defiers.
+	\end{itemize}
+	\item $Z$: our assignment. $T$: whether the subjects receive the treatment.
+	\item $Z\neq T$; $Z$ is randomized $\implies$ $Z=0$ and $Z=1$ are apples-to-apples
+	\begin{itemize}
+		\item Given $Z=1$: 
+		\begin{itemize}
+			\item $T=1$: always takers + compliers
+			\item $T=0$: never takers
+		\end{itemize}
+		\item Given $Z=0$: 
+		\begin{itemize}
+			\item $T=1$: always takers
+			\item $T=0$: never takers + compliers
+		\end{itemize}
+	\end{itemize}
+	\item We can compute the proportion of compliers by \[1-\P(\text{always takers}) - \P(\text{never takers}).\]
+	\item First Stage Treatment: \begin{align*}&\Avg[T\mid Z=1]-\Avg[T\mid Z=0]\\&=\P(\text{always takers})+\P(\text{compliers})-\P(\text{always takers})\\&=\P(\text{compliers})\end{align*}
+	\item Intent-to-Treat (ITT): \[\Avg[Y\mid Z=1]-\Avg[Y\mid Z=0]\]
+	\begin{itemize}
+		\item ITT under estimates CATE because it averages in always takers and never takers with treatment effect of $0$.
+		\item We can scale ITT back to the CATE up by the proportion of compliers.
+	\end{itemize}
+	\item Complier Average Treatment Effect (CATE): \[\CATE=\dfrac{\ITT}{\P(\mathrm{compliers})}\]
+	\item Assumptions:
+	\begin{itemize}
+		\item No defiers
+		\item Some compliers
+		\item Exclusion ($Z$ is only associated with $T$)
+		\item Exogeneity (random or as-if random)
+	\end{itemize}
+\end{itemize}
+
+\section*{Useful Phrasings}
+\begin{itemize}
+	\item \textit{The intention to treat ($Z$) is an admissible instrument for the actual treatment status ($T$) in this randomized experiment with noncompliance.} \par The intention to treat should meet $3$ conditions to be a proper instrumental variable:
+	\begin{itemize}
+		\item Relevance + ITT is strongly correlated with actual treatment uptake + evidence: \% of compliers
+		\item Exclusion + evidence (in context): It’s hard to argue that the $\ITT$ alone causes any sort of other outcome that affects the outcomes than whether or not the individual receives treatment.
+		\item Exchangeability – because $Z$ is randomized, it cannot correlate with any pre-existing confounder
+	\end{itemize}
+	\item \textit{Should we expect that the $\CATE$ to be a good estimate of the true average treatment effect for \textbf{all} individuals?}
+	\begin{itemize}
+		\item CATE is local/only for compliers + context
+		\item Compliers being different from non-compliers + evidence in context
+	\end{itemize}
+	\item \textit{The continuity assumption that is critical to RDD. The relationship between the continuity assumption, ``as-if'' randomization, and apples-to-apples comparisons.}
+	\begin{itemize}
+		\item The continuity assumption: the potential outcomes functions continue smoothly across the threshold – as we transition from what we can see to what we cannot, there are no jumps at the threshold.
+		\item This assumption bakes in the apples-to-apples comparison at the threshold + explanation with context $Y$ of subjects below the threshold is identical to $Y$ of subjects above the threshold.
+		\item This is equivalent to random assignment about the threshold, so the $\LATE$ is free from bias.
+	\end{itemize}
+	\item \textit{Is $\LATE$ a good estimator of all populations?} 
+	\begin{itemize}
+		\item Not really. 
+		\item The LATE only applies to individuals at the threshold. Using this design, we learn nothing about the treatment effect for those away from the threshold -- it is wholly possible that the potential outcomes for the treated in a world where they are not treated do not follow the “trend” discovered on the left of the threshold.
+	\end{itemize}
+\end{itemize}
+\end{multicols}
+\thispagestyle{plain}
+\hfill
+\hfill
+\begin{center}\begin{tabular}{c|p{2.5cm}|p{2.5cm}|p{2.4cm}|p{1.9cm}}
+	&Regression&DiD&RDD&IV\\\hline
+	When to use&Anytime&Treated and untreated, before and after treatment&Sharp threshold (Treated one side, untreated the other)&Experiments with non-compliance\\\hline
+	Assumptions&controlling for all confounders (Omitted Variable Bias)&Parallel trends&Continuity (Manipulation of score)&Exogeneity, Exclusion, Compliers, no defiers\\\hline
+	Name for Estimate&$\ATE$&$\ATT$ or DiD&LATE&$\CATE$
+\end{tabular}\end{center}
+
+
+\maketitle\thispagestyle{fancy}
+\section{Regression}
+\begin{itemize}
+	\item General formula: \[Y_i=\alpha+\beta T_i+\gamma V_i+r_i\]
+	\begin{itemize}
+		\item $Y$: dependent variable; $T$: independent variable/treatment; $V$: controlled variable (confounder)
+		\item $\alpha=\E[Y_0]$: intercept
+		\item $\beta=\ATE$: slope (estimand)
+		\item $r$: error term/residual
+	\end{itemize}
+	\item Omitted Variable Bias (Confounders): 
+	\begin{itemize}
+		\item Confounders must affect treatment AND outcome
+		\item Short (uncontrolled): \[Y_i=\alpha+\beta^S T_i+r_i\]
+		\item Long (controlled): \[Y_i=\alpha+\beta^L T_i+\gamma V_i+r_i\]
+		\item Omitted Variable Bias (OVB): \[\OVB=\beta^S-\beta^L.\]
+		\item If $\beta^S>\beta^L$, then we overestimate the treatment effect. $\beta^L$ is a \textbf{less biased} estimate of the $\ATE$ than $\beta^S$.
+		\item If $\beta^S$ and $\beta^L$ are negative, we compare $\qty|\beta^S|$ and $\qty|\beta^L|$. If $\qty|\beta^S|>\qty|\beta^L|$, then we overestimate the negative treatment effect.
+	\end{itemize}
+\end{itemize}
+
+\section{Difference-in-Difference}
+\begin{itemize}
+	\item Key: Parallel Trends. Outcomes must change at the similar rates; lines should have similar slopes. 
+	\item Two approaches: Difference over time and different between subjects. \[(Y_\text{treated, post-treatment}-Y_\text{treated, pre-treatment})-(Y_\text{untreated, post-treatment}-Y_\text{untreated, pre-treatment})\]\[(Y_\text{treated, post-treatment}-Y_\text{untreated, post-treatment})-(Y_\text{treated, pre-treatment}-Y_\text{untreated, pre-treatment})\]
+	\item Violation of parallel trends: overestimate and underestimate. 
+\end{itemize}
+
+\section{Regression Discontinuity Design (RDD)}
+\begin{itemize}
+	\item Running variable
+	\item Local Average Treatment Effect (LATE)
+	\begin{itemize}
+		\item If we change the bin, we will get different LATEs.
+		\item Different ways to get LATEs: naïve way (choose a bin and compute the bin at both sides of the bin), local linear (choose a window and run linear regressions then compute the limit), polynomial (choose window and run polynomial regressions then compute the limit). 
+	\end{itemize}
+	\item Continuity Assumption: Points must have the same \textbf{potential outcomes} at the threshold. 
+	\item \textbf{Capacity to manipulate} treatment assignment cannot be related to outcome.
+\end{itemize}
+
+\section{Noncompliance and Instrument}
+\begin{itemize}
+	\item Types of Populations:
+	\begin{itemize}
+		\item Always Takers
+		\item Compliers: What we are interested in. 
+		\item Never Takers
+		\item Defiers: we assume there are no defiers.
+	\end{itemize}
+	\item $Z$: our assignment. $T$: whether the subjects receive the treatment.
+	\item $Z\neq T$; $Z$ is randomized: $Z=0$ and $Z=1$ are apples-to-apples
+	\begin{itemize}
+		\item Given $Z=1$: 
+		\begin{itemize}
+			\item We could have $T=1$: always takers + compliers
+			\item We could have $T=0$: never takers
+		\end{itemize}
+		\item Given $Z=0$: 
+		\begin{itemize}
+			\item We could have $T=1$: always takers
+			\item We could have $T=0$: never takers + compliers
+		\end{itemize}
+	\end{itemize}
+	\item Since we know \[\P(\text{compliers}) + \P(\text{always takers}) + \P(\text{never takers}) = 1\] we can compute the proportion of compliers by \[1-\P(\text{always takers}) - \P(\text{never takers}).\]
+	\item \begin{align*}\E[T\mid Z=1]&=1\times[\P(\text{always takers})+\P(\text{compliers})]+0\times\P(\text{never takers})\\&=\P(\text{always takers})+\P(\text{compliers})\end{align*}
+	\[\E[T\mid Z=0]=1\times\P(\text{always takers})+0\times[\P(\text{compliers})+\P(\text{never takers})]=\P(\text{always takers})\]
+	\item First Stage Treatment: \[\Avg[T\mid Z=1]-\Avg[T\mid Z=0]=\P(\text{always takers})+\P(\text{compliers})-\P(\text{always takers})=\P(\text{compliers})\]
+	\item Intent-to-Treat (ITT): \[\Avg[Y\mid Z=1]-\Avg[Y\mid Z=0]\]
+	\begin{itemize}
+		\item ITT under estimates CATE because it averages in always takers and never takers with treatment effect of $0$.
+		\item We can scale ITT back to the CATE up by the proportion of compliers.
+	\end{itemize}
+	\item Complier Average Treatment Effect (CATE): \[\CATE=\dfrac{\ITT}{\P(\mathrm{compliers})}\]
+	\item Assumptions:
+	\begin{itemize}
+		\item No defiers
+		\item Some compliers
+		\item Exclusion ($Z$ is only associated with $T$)
+		\item Exogeneity (random or as-if random)
+	\end{itemize}
+\end{itemize}
+
+\begin{center}\begin{tabular}{p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}}
+	&Regression&DiD&RDD&IV\\\hline
+	When to use&Anytime&Treated and untreated, before and after treatment&Sharp threshold (Treated one side, untreated the other)&Experiments with non-compliance\\\hline
+	Assumptions&controlling for all confounders (Omitted Variable Bias)&Parallel trends&Continuity (Manipulation of score)&Exogeneity, Exclusion, Compliers, no defiers\\\hline
+	Name for Estimate&$\ATE$ or $\ATE\mid X$&$\ATT$ or DiD&LATE&$\CATE$
+\end{tabular}\end{center}
+
+
+\label{LastPage}
+\end{document}
