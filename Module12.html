@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Module 12 · GitBook</title>
+        <title>Module 12 Multiple Testing, Reporting Bias, and Misinterpreting Outliers · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -242,7 +242,7 @@
                 <a href="Module12.html">
             
                     
-                    Module 12
+                    Module 12 Multiple Testing, Reporting Bias, and Misinterpreting Outliers
             
                 </a>
             
@@ -324,7 +324,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Module 12</a>
+        <a href="." >Module 12 Multiple Testing, Reporting Bias, and Misinterpreting Outliers</a>
     </h1>
 </div>
 
@@ -339,7 +339,62 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="multiple-testing-reporting-bias-and-misinterpreting-outliers">Multiple Testing, Reporting Bias, and Misinterpreting Outliers</h1>
+<h2 id="introduction-to-multiple-testing">Introduction to Multiple Testing</h2>
+<ul>
+<li>The General Problem<ul>
+<li>Statistical testing and p-values are great ides.</li>
+<li>When we find patterns in the world, we want to know if they reflect genuine phenomena or if they could have easily been produced by random chance.</li>
+<li>For any given statistical result, these tools can help us figure out if the result is easily explained by chance or not.</li>
+<li>HOWEVER, we face the file drawer problem: the public don&apos;t get to see all statistical tests that were conducted or could have been conducted. We only see the ones that were published (usually are those &quot;statistically significant&quot; ones).</li>
+<li>Testing multiple hypotheses + selectively reporting only the significant results = dangerous combination.</li>
+</ul>
+</li>
+<li>A General Phenomenon<ul>
+<li>Once we appreciate the problem of multiple testing and selective reporting, we start to see it everywhere.</li>
+<li>We might even wonder if we know anything</li>
+</ul>
+</li>
+</ul>
+<h2 id="multiple-testing-in-research-practice">Multiple Testing in Research Practice</h2>
+<ul>
+<li><strong>p-Hacking</strong>: An analyst knows that their result is much more interesting, exciting, and publishable if the result is statistically significant. They play around with their sample, their specification, etc. until they get a significant result, and they only report that one. </li>
+<li><strong>p-Screening</strong>: Honest researchers formulate hypotheses and conduct their tests. However, the statistically significant results are more likely to be written up, published, and publicized because those results are more interesting. </li>
+<li>In both cases, we can end up with lots of false positives and overestimates. </li>
+<li>Giving ourselves too many chances: <ul>
+<li>If we give ourselves a lot of chances to reject the null, the chances are pretty good that we will get at least one p&lt;0.05.</li>
+<li>Ways to give ourselves too many changes? <ul>
+<li>Asking Different Questions<ul>
+<li>If we ask a lot of different questions and conduct a hypothesis test for each one, the chances are very good at least one will look significant. </li>
+</ul>
+</li>
+<li>Trying Different Methods<ul>
+<li>When we conduct the first independent data analysis, researches have to make various choices (which method to use, which variables to include, etc.). These choices can be collectively called the <strong>researcher degrees of freedom</strong>. Or more colloquially, &quot;wiggle room&quot;.</li>
+<li>Sometimes, researchers can feel tempted to <strong>peak and tweak</strong>. This need not be malicious or deliberate. We are all human and feel pressure and want to be proven right. It doesn&apos;t make us bad people, but as a scientist/analyst, we need to be on guard against this temptation. </li>
+</ul>
+</li>
+<li>Testing Subgroups<ul>
+<li>Instead of increasing our chances by trying different analytical methods or questions, we could just look at the same questions and methods indifferent <strong>subgroups</strong>. </li>
+</ul>
+</li>
+<li>Quietly Conducting Multiple Studies (screening)<ul>
+<li><strong>Reporting/Publication Bias</strong>: scientific journals, and, consequently, the broader press, have a strong preference for statistically significant results. The practice of only publishing and reporting statistically significant results is called <strong>publication bias</strong> or <strong>reporting bias</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>How do we know p-hacking and p-screening is a problem? <ul>
+<li>We know how p-values are defined, so we have an expectation about how likely any value of p would be.<ul>
+<li>Specifically, p-values are uniformly distributed under the null. </li>
+<li>This just means, assuming no bias and the null is true (i.e. there is no effect), we expect to see p-values of 0.01, 0.02, 0.03, etc. with equal probability. <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#x27F6;</mo></mrow><annotation encoding="application/x-tex">\longrightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.511em;"></span><span class="strut bottom" style="height:0.522em;vertical-align:-0.011em;"></span><span class="base textstyle uncramped"><span class="mrel">&#x27F6;</span></span></span></span> 20% chance of observing a p-value <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#x2264;</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">&#x2264;</span></span></span></span> 0.2, 5% chance of observing a p-value <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#x2264;</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">&#x2264;</span></span></span></span> 0.05, and 99% chance of observing a p-value <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>&#x2264;</mo></mrow><annotation encoding="application/x-tex">\leq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.63597em;"></span><span class="strut bottom" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="base textstyle uncramped"><span class="mrel">&#x2264;</span></span></span></span> 0.99.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -382,7 +437,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Module 12","level":"1.1.11","depth":2,"next":{"title":"Module 13","level":"1.1.12","depth":2,"path":"Module13.md","ref":"Module13.md","articles":[]},"previous":{"title":"Module 11 Bayesian Inference and Base Rates","level":"1.1.10","depth":2,"path":"Module11.md","ref":"Module11.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module12.md","mtime":"2023-10-30T14:17:22.199Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-11-13T22:27:52.455Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Module 12 Multiple Testing, Reporting Bias, and Misinterpreting Outliers","level":"1.1.11","depth":2,"next":{"title":"Module 13","level":"1.1.12","depth":2,"path":"Module13.md","ref":"Module13.md","articles":[]},"previous":{"title":"Module 11 Bayesian Inference and Base Rates","level":"1.1.10","depth":2,"path":"Module11.md","ref":"Module11.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module12.md","mtime":"2023-11-20T16:13:57.977Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-11-27T15:09:48.204Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
