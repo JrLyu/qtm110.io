@@ -338,6 +338,189 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="prediction">Prediction</h1>
+<h2 id="what-is-prediction-why-is-it-different">What is prediction? Why is it different?</h2>
+<ul>
+<li>Prediction is everywhere: <ul>
+<li>Basically all modern AI system employ prediction at their core</li>
+<li>Success of AI is largely a function of three advances:<ul>
+<li>Computation</li>
+<li>Data</li>
+<li>Algorithms</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Some algorithms/Forms of Prediction:<ul>
+<li>Machine Learning<ul>
+<li>Linear regression, logistic regression, PCA, LASSO, random forests, K-NN, etc. </li>
+</ul>
+</li>
+<li>Artificial Intelligence</li>
+<li>Deep Learning</li>
+</ul>
+</li>
+<li>Why prediction?<ul>
+<li>Prediction seeks to find a best guess for an outcome given some meaningfully associated data.<ul>
+<li>e.g. Stock markets</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Why Prediction?<ul>
+<li>What is machine learning?<ul>
+<li>The study of algorithms that improve through repeated experience</li>
+<li>Given observations of an outcome and some important correlations, build models that predict outcomes.</li>
+<li>Machine learning is mostly concerned with prediction. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Prediction vs. Explanatory Modeling: <ul>
+<li>Different in goals:<ul>
+<li>Explanatory Modeling (Causal Inference): What is the effect of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> on <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi><mo>?</mo></mrow><annotation encoding="application/x-tex">Y?</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="mclose">?</span></span></span></span></li>
+<li>Prediction: Can we forecast what <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span> will be given <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span>?</li>
+</ul>
+</li>
+<li>Casual Inference: We want to know the effect of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> on <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span>, so we <ul>
+<li>Run an experiment randomizing <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span></li>
+<li>Use a DiD or Regression Discontinuity</li>
+<li>Run a regression controlling for all possible confounders.</li>
+<li>Use modeling to estimate unobservable potential outcomes, control for confounders, and quantify uncertainty around our estimated effect.</li>
+</ul>
+</li>
+<li>Predictive Recipe: find a model for <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi></mrow><annotation encoding="application/x-tex">X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span> that minimizes my prediction error
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">P</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">d</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">n</mi><mtext>&#xA0;</mtext><mi mathvariant="normal">E</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi></mtext><mo>=</mo><msubsup><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></msubsup><mi>f</mi><mo>(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>&#x2212;</mo><msub><mover accent="true"><mrow><mi>y</mi></mrow><mo>^</mo></mover><mi>i</mi></msub><mo>)</mo><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">
+\text{Prediction Error}=\sum_{i=1}^Nf(y_i-\hat{y}_i).
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.8283360000000002em;"></span><span class="strut bottom" style="height:3.106005em;vertical-align:-1.277669em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord text displaystyle textstyle uncramped"><span class="mord mathrm">Prediction&#xA0;Error</span></span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">i</span><span class="mrel mtight">=</span><span class="mord mathrm mtight">1</span></span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span><span class="mop op-symbol large-op">&#x2211;</span></span></span><span style="top:-1.2500050000000003em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight" style="margin-right:0.10903em;">N</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mbin">&#x2212;</span><span class="mord"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="mord displaystyle textstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">y</span></span></span><span style="top:0em;margin-left:0.11112em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="accent-body"><span>^</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">&#x200B;</span></span>&#x200B;</span></span></span></span><span class="mclose">)</span><span class="mord mathrm">.</span></span></span></span></span><ul>
+<li>In words, over <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">N</span></span></span></span> observations, how far off from the truth amd I with the predictions produced by my model?</li>
+</ul>
+</li>
+<li>Explanation can aid in some types of prediction problems but is not necessary in many cases.</li>
+<li>Even if we do not know the causal effect (or even if the causal effect is zero), there might be predictive information in knowing a treatment status. <ul>
+<li>They key is that these features contain information about the outcome we are trying to predict.</li>
+<li>Rule of Thumb: avoid noise, add new information</li>
+</ul>
+</li>
+<li>The main predictive question:<ul>
+<li>Can I predict the value of <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span> given some correlates for an observation that was not included in the modeling step? </li>
+<li>Sometimes, we care about future observations that have not yet occurred (forecasting).</li>
+<li>Other times, we care about with-in sample prediction ability.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Types of Prediction.<ul>
+<li>Static Prediction<ul>
+<li>Key assumption: Environment is static (does not change)<ul>
+<li>No policy change</li>
+<li>No Adaptation</li>
+</ul>
+</li>
+<li>Dynamic prediction:<ul>
+<li>Environment may change due to<ul>
+<li>Adaptation</li>
+<li>policy change</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="good-and-bad-prediction">Good and Bad Prediction</h2>
+<ul>
+<li>What makes for good predictors:<ul>
+<li>Avoid Redundancy</li>
+<li>Avoid pure noise</li>
+<li>Precise information reduces noise</li>
+<li>Predictors from a variety of domains provide different information</li>
+</ul>
+</li>
+<li>Evaluating Predictive Performance:<ul>
+<li>The higher order polynomial, the less error we have in the training data. </li>
+<li>Overfitting occurs when we tune a predictive model only on the data we observe.</li>
+<li>Since the goal of prediction is to minimize the prediction errors, a model that only accounts for the observed data will produce fits that are too specific for general prediction.</li>
+<li>We need to balance fitting the observed data with generality - favor <strong>parsimonious</strong> models over complex models while still avoiding <strong>underfitting</strong>. </li>
+</ul>
+</li>
+<li>Overfitting/Bias-Variance Trade-off<ul>
+<li><strong>Overfitting</strong>: aka the <strong>bias-variance trade-off</strong> in machine learning parlance. 
+<img src="https://miro.medium.com/v2/resize:fit:4800/format:webp/1*9hPX9pAO3jqLrzt0IE3JzA.png" alt="Underfitting, Overfitting and Good Balance"><ul>
+<li>Overreacts to every tiny random perturbation in the data.</li>
+<li>Excellent, maybe perfect fit to <strong>in-sample</strong> data</li>
+<li>Models noise -&gt; won&apos;t extrapolate/generalize well to new <strong>out-of-sample</strong> data. </li>
+</ul>
+</li>
+<li><strong>Underfitting</strong>: misses the true patterns/ relationships in the data (bias)<ul>
+<li>Underreacts to real changes</li>
+<li>Won&apos;t describe in-sample or out-of-sample data well.</li>
+</ul>
+</li>
+<li>Overfitting can occur in two circumstances:<ul>
+<li>Model is too flexible to observed data</li>
+<li>Model includes many predictors that are only loosely related to the outcome - especially problematic when the predictors are correlated with one another (kitchen sink models).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="how-to-avoid-overfitting">How to avoid overfitting?</h2>
+<ul>
+<li>Evaluating Predictive Performance:<ul>
+<li>The prediction recipe:<ul>
+<li>Collect predictors and outcomes for some number of observations.</li>
+<li><strong>Hold out</strong> some portion of the observations as a <strong>test</strong> set.</li>
+<li>Find the optimal coefficients for the predictive model on the <strong>training</strong> subset of the data.</li>
+<li>Evaluate the prediction error on the <strong>test</strong> set.</li>
+</ul>
+</li>
+<li>Sometimes, there is a natural training/test split: e.g. time intervals</li>
+<li>Other times, we need to randomly split the data into training and test sets. e.g. randomly hold-out 20% of the data as a test set and fit the model on the other 80%. Quantify predictive performance on the held-out test set.<ul>
+<li>This is better than including all data in predictive model at first because it guards against overfitting to the data - if the model fits the training set well, but doesn&apos;t fit the test set, then the model predictions aren&apos;t very good. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cross-Validation:<ul>
+<li>The cross-validation prediction recipe:<ul>
+<li>Collect predictors and outcomes for some number of observations.</li>
+<li>Divide the data into <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">K</span></span></span></span> equally sized <strong>folds</strong>.</li>
+<li>Treating fold <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span> as the test set, find the predictive model using the training set that minimizes prediction error in fold <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span>.</li>
+<li>Repeat for each fold, treating them as the test set in turn.</li>
+<li>Average the predictions of each &quot;best model&quot; to get the <strong>K-fold cross-validated</strong> prediction.</li>
+</ul>
+</li>
+<li>K-fold cross validation addresses both problem of selecting test set and overfitting by ensuring that all observations are held-out at one point or another.</li>
+<li>Prevents overfitting by averaging over the models - what&apos;s good for one may not be good for another, so find a happy medium by averaging them all together. </li>
+</ul>
+</li>
+<li>Avoid Spurious Predictors<ul>
+<li>Overfitting can also happen if our model includes many predictors that are only loosely related to the outcome. <ul>
+<li>Espeically problematic when the predictors are correlated with one another (kitchen sink models).</li>
+</ul>
+</li>
+<li>Is the predictor really related to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span> or is the correlation in this data significant by chance/noise? </li>
+</ul>
+</li>
+<li>Signal vs. Noise<ul>
+<li>Let <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">Z</span></span></span></span> be an unimportant predictor</li>
+<li>When finding the model that minimizes prediction error, random chance dictates that there will be a relationship between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">Z</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span>.</li>
+<li>If we try to apply this estimate to new observations, then the <strong>spurious</strong> correlation between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Z</mi></mrow><annotation encoding="application/x-tex">Z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07153em;">Z</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.22222em;">Y</span></span></span></span> can be lead predictions to be off. </li>
+</ul>
+</li>
+<li>A final thought on preventing overfitting:<ul>
+<li>A data scientist who has domain knowledge can prevent overfitting by only including predictors and potential models that make sense in the context of the problem.</li>
+<li>Even if the problem at hand isn&apos;t directly explanatory in nature, predictive models benefit from the same considerations that make a good causal model:<ul>
+<li>Only include predictors that meaningfully correlate with the outcome of interest.</li>
+<li>Avoid having many correlated predictors.</li>
+<li>Carefully consider functional forms for the predictive model - use a best-fit line when a line will do. </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -377,7 +560,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Module 15 Prediction","level":"1.1.14","depth":2,"previous":{"title":"Module 14 Adaptation","level":"1.1.13","depth":2,"path":"Module14.md","ref":"Module14.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module15.md","mtime":"2023-11-27T15:27:45.918Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-11-27T18:53:51.060Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Module 15 Prediction","level":"1.1.14","depth":2,"previous":{"title":"Module 14 Adaptation","level":"1.1.13","depth":2,"path":"Module14.md","ref":"Module14.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["katex"],"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Module15.md","mtime":"2023-12-04T21:21:59.459Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-12-04T21:24:03.372Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
